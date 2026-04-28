@@ -1547,28 +1547,30 @@ section {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-style: italic;
-  font-size: 28px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   line-height: 1.4;
   color: var(--afas-antraciet);
-  margin-bottom: 40px;
+  margin-bottom: 24px;
+}
+
+.testimonial-sub {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--afas-tekst);
+  margin-bottom: 32px;
 }
 
 .testimonial-author {
   display: inline-flex;
   align-items: center;
   gap: 16px;
-}
-
-.testimonial-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: var(--afas-grijs-licht);
-  flex-shrink: 0;
+  margin-bottom: 20px;
 }
 
 .testimonial-info {
-  text-align: left;
+  text-align: center;
 }
 
 .testimonial-name {
@@ -1587,10 +1589,16 @@ section {
   color: var(--afas-grijs-licht);
 }
 
-@media (max-width: 767px) {
-  .testimonial-quote {
-    font-size: 22px;
-  }
+.testimonial-link {
+  display: inline-block;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  color: var(--afas-blauw);
+  text-decoration: underline;
+}
+
+.testimonial-link:hover {
+  color: var(--afas-oranje);
 }
 
 /* --- 8. Stappenplan --- */
