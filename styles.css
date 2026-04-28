@@ -171,11 +171,18 @@ section {
 
 .logo {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 .logo-img {
-  height: 32px;
+  height: 36px;
   width: auto;
+  transition: opacity 0.2s;
+}
+
+.logo-img:hover {
+  opacity: 0.85;
 }
 
 .nav-list {
@@ -3119,11 +3126,13 @@ section {
 }
 
 .footer-logo {
-  font-family: "Roboto", sans-serif;
-  font-weight: 900;
-  font-size: 24px;
-  color: var(--afas-wit);
   margin-bottom: 12px;
+}
+
+.footer-logo-img {
+  height: 40px;
+  width: auto;
+  filter: brightness(0) invert(1);
 }
 
 .footer-desc {
