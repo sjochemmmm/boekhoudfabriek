@@ -550,6 +550,100 @@ section {
   object-fit: contain;
 }
 
+/* ====== Animated SVG icon: Cloud (float) ====== */
+.visie-icon--cloud .cloud-group {
+  animation: cloudFloat 3s ease-in-out infinite;
+}
+@keyframes cloudFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.visie-icon--cloud .sync-arrows {
+  animation: arrowPulse 2s ease-in-out infinite;
+}
+@keyframes arrowPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ====== Animated SVG icon: Team (pulse connection) ====== */
+.visie-icon--team .person-1 {
+  animation: personPulse1 2.5s ease-in-out infinite;
+}
+.visie-icon--team .person-2 {
+  animation: personPulse2 2.5s ease-in-out infinite;
+}
+@keyframes personPulse1 {
+  0%, 100% { transform: scale(1); transform-origin: 28px 28px; }
+  50% { transform: scale(1.08); transform-origin: 28px 28px; }
+}
+@keyframes personPulse2 {
+  0%, 100% { transform: scale(1.08); transform-origin: 52px 28px; }
+  50% { transform: scale(1); transform-origin: 52px 28px; }
+}
+.visie-icon--team .connection circle {
+  animation: connectionGlow 2s ease-in-out infinite;
+}
+@keyframes connectionGlow {
+  0%, 100% { opacity: 0.6; r: 3; }
+  50% { opacity: 1; r: 5; }
+}
+.visie-icon--team .connection line {
+  animation: dashMove 1.5s linear infinite;
+}
+@keyframes dashMove {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -10; }
+}
+
+/* ====== Animated SVG icon: AI (scan line) ====== */
+.visie-icon--ai .scan-line {
+  animation: scanMove 2.5s ease-in-out infinite;
+}
+@keyframes scanMove {
+  0% { transform: translateY(0); opacity: 1; }
+  80% { transform: translateY(30px); opacity: 1; }
+  90% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+.visie-icon--ai .doc-line {
+  animation: lineReveal 2.5s ease-in-out infinite;
+}
+.visie-icon--ai .line-1 { animation-delay: 0s; }
+.visie-icon--ai .line-2 { animation-delay: 0.2s; }
+.visie-icon--ai .line-3 { animation-delay: 0.4s; }
+.visie-icon--ai .line-4 { animation-delay: 0.6s; }
+@keyframes lineReveal {
+  0%, 30% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+.visie-icon--ai .checkmark {
+  animation: checkAppear 2.5s ease-in-out infinite;
+}
+@keyframes checkAppear {
+  0%, 75% { opacity: 0; transform: scale(0.5); transform-origin: 52px 56px; }
+  85% { opacity: 1; transform: scale(1.1); transform-origin: 52px 56px; }
+  95%, 100% { opacity: 1; transform: scale(1); transform-origin: 52px 56px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .visie-icon--cloud .cloud-group,
+  .visie-icon--cloud .sync-arrows,
+  .visie-icon--team .person-1,
+  .visie-icon--team .person-2,
+  .visie-icon--team .connection circle,
+  .visie-icon--team .connection line,
+  .visie-icon--ai .scan-line,
+  .visie-icon--ai .doc-line,
+  .visie-icon--ai .checkmark {
+    animation: none;
+  }
+  .visie-icon--ai .checkmark { opacity: 1; transform: scale(1); }
+  .visie-icon--ai .doc-line { opacity: 0.7; }
+}
+
 .visie-block__title {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
