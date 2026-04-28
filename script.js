@@ -170,4 +170,91 @@ document.addEventListener("DOMContentLoaded", () => {
     updateRekentool();
   }
 
+  // --- Scroll-reveal (Intersection Observer) ---
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReducedMotion) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal").forEach((el) => {
+      revealObserver.observe(el);
+    });
+  } else {
+    document.querySelectorAll(".reveal").forEach((el) => {
+      el.classList.add("is-visible");
+    });
+  }
+
+  // --- Animated counters in cijfersectie ---
+  const statNumbers = document.querySelectorAll(".stat-number[data-count-to]");
+
+  if (statNumbers.length > 0) {
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.countTo, 10);
+      const suffix = el.dataset.countSuffix || "";
+      const displayTemplate = el.dataset.countDisplay || null;
+      const duration = 1800;
+      const startTime = performance.now();
+
+      function easeOutQuart(t) {
+        return 1 - Math.pow(1 - t, 4);
+      }
+
+      function tick(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOutQuart(progress);
+        const current = Math.round(eased * target);
+
+        if (displayTemplate) {
+          el.textContent = displayTemplate.replace("{n}", current);
+        } else {
+          el.textContent = current + suffix;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        }
+      }
+
+      if (prefersReducedMotion) {
+        if (displayTemplate) {
+          el.textContent = displayTemplate.replace("{n}", target);
+        } else {
+          el.textContent = target + suffix;
+        }
+      } else {
+        if (displayTemplate) {
+          el.textContent = displayTemplate.replace("{n}", "0");
+        } else {
+          el.textContent = "0" + suffix;
+        }
+        requestAnimationFrame(tick);
+      }
+    }
+
+    const statsSection = document.getElementById("cijfers");
+    if (statsSection) {
+      let statsAnimated = false;
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !statsAnimated) {
+            statsAnimated = true;
+            statNumbers.forEach(animateCounter);
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      statsObserver.observe(statsSection);
+    }
+  }
+
 });
