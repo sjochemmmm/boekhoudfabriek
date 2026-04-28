@@ -586,8 +586,8 @@ section {
 
 .visie-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px 40px;
   margin-top: 60px;
 }
 
@@ -706,6 +706,31 @@ section {
   95%, 100% { opacity: 1; transform: scale(1); transform-origin: 52px 56px; }
 }
 
+/* ====== Animated SVG icon: RGS (database/library) ====== */
+.visie-icon--rgs .rgs-shelf {
+  animation: shelfGrow 2.5s ease-in-out infinite;
+}
+.visie-icon--rgs .rgs-shelf-1 { animation-delay: 0s; }
+.visie-icon--rgs .rgs-shelf-2 { animation-delay: 0.3s; }
+.visie-icon--rgs .rgs-shelf-3 { animation-delay: 0.6s; }
+@keyframes shelfGrow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.visie-icon--rgs .rgs-node {
+  animation: nodeGlow 2s ease-in-out infinite;
+}
+.visie-icon--rgs .rgs-node-1 { animation-delay: 0s; }
+.visie-icon--rgs .rgs-node-2 { animation-delay: 0.4s; }
+.visie-icon--rgs .rgs-node-3 { animation-delay: 0.8s; }
+@keyframes nodeGlow {
+  0%, 100% { r: 3; opacity: 0.7; }
+  50% { r: 5; opacity: 1; }
+}
+.visie-icon--rgs .rgs-connect {
+  animation: dashMove 1.5s linear infinite;
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .visie-icon--cloud .cloud-group,
@@ -716,11 +741,16 @@ section {
   .visie-icon--team .connection line,
   .visie-icon--ai .scan-line,
   .visie-icon--ai .doc-line,
-  .visie-icon--ai .checkmark {
+  .visie-icon--ai .checkmark,
+  .visie-icon--rgs .rgs-shelf,
+  .visie-icon--rgs .rgs-node,
+  .visie-icon--rgs .rgs-connect {
     animation: none;
   }
   .visie-icon--ai .checkmark { opacity: 1; transform: scale(1); }
   .visie-icon--ai .doc-line { opacity: 0.7; }
+  .visie-icon--rgs .rgs-shelf { opacity: 0.8; }
+  .visie-icon--rgs .rgs-node { opacity: 1; }
 }
 
 .visie-block__title {
@@ -753,7 +783,7 @@ section {
 @media (max-width: 767px) {
   .visie-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
 
   .visie-intro {
