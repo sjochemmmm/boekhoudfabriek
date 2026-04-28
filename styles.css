@@ -1202,8 +1202,8 @@ section {
 .werkdag-timeline {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 16px 0 8px;
-  margin-bottom: 12px;
+  padding: 24px 0 44px;
+  margin-bottom: 0;
 }
 
 .werkdag-timeline__track {
