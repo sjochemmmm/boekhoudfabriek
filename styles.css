@@ -498,16 +498,6 @@ section {
   line-height: 1.5;
 }
 
-.visie-image {
-  display: block;
-  max-width: 900px;
-  width: 100%;
-  height: auto;
-  margin: 60px auto 60px;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
 .visie-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -572,11 +562,6 @@ section {
     font-size: 20px;
   }
 
-  .visie-image {
-    max-width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
-  }
 }
 
 /* --- 3c-bis. Schuif (slider) --- */
