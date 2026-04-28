@@ -289,4 +289,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- 3D Tilt effect op smaken-kaarten en visie-blokken ---
+  if (canHover && !prefersReducedMotion) {
+    const tiltCards = document.querySelectorAll(".smaak-card, .visie-block");
+    tiltCards.forEach((card) => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const rotateX = (y - 0.5) * -10;
+        const rotateY = (x - 0.5) * 10;
+        card.style.transform = "perspective(1000px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) scale(1.02)";
+        card.style.setProperty("--mouse-x", (x * 100) + "%");
+        card.style.setProperty("--mouse-y", (y * 100) + "%");
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+      });
+    });
+  }
+
 });

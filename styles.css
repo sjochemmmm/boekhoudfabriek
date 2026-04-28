@@ -507,6 +507,24 @@ section {
 
 .visie-block {
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.visie-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.1) 0%, transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.visie-block:hover::before {
+  opacity: 1;
 }
 
 .visie-icon {
@@ -848,7 +866,23 @@ section {
   border: 2px solid var(--afas-bg-licht);
   border-radius: 12px;
   padding: 40px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.smaak-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.1) 0%, transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.smaak-card:hover::before {
+  opacity: 1;
 }
 
 .smaak-card:hover {
@@ -861,7 +895,7 @@ section {
 }
 
 .smaak-card--featured:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 30px 60px rgba(245, 159, 57, 0.3);
 }
 
 .smaak-icon {
