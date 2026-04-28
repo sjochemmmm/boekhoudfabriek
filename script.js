@@ -495,4 +495,98 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- Klantverhalen Carousel ---
+  (function() {
+    var track = document.getElementById("kvTrack");
+    if (!track) return;
+
+    var prevBtns = [document.getElementById("kvPrev"), document.getElementById("kvPrevMobile")];
+    var nextBtns = [document.getElementById("kvNext"), document.getElementById("kvNextMobile")];
+    var allArrows = prevBtns.concat(nextBtns).filter(Boolean);
+    var kvAutoTimer = null;
+    var kvAutoDelay = null;
+
+    function getCardWidth() {
+      var card = track.querySelector(".kv-card");
+      if (!card) return 300;
+      var style = getComputedStyle(track);
+      var gap = parseInt(style.gap) || 24;
+      return card.offsetWidth + gap;
+    }
+
+    function updateArrows() {
+      var atStart = track.scrollLeft <= 4;
+      var atEnd = track.scrollLeft + track.offsetWidth >= track.scrollWidth - 4;
+      prevBtns.forEach(function(b) {
+        if (b) {
+          b.classList.toggle("is-disabled", atStart);
+          b.disabled = atStart;
+        }
+      });
+      nextBtns.forEach(function(b) {
+        if (b) {
+          b.classList.toggle("is-disabled", atEnd);
+          b.disabled = atEnd;
+        }
+      });
+    }
+
+    function scrollNext() {
+      track.scrollLeft += getCardWidth();
+    }
+
+    function scrollPrev() {
+      track.scrollLeft -= getCardWidth();
+    }
+
+    nextBtns.forEach(function(b) {
+      if (b) b.addEventListener("click", function() { pauseAutoplay(); scrollNext(); });
+    });
+    prevBtns.forEach(function(b) {
+      if (b) b.addEventListener("click", function() { pauseAutoplay(); scrollPrev(); });
+    });
+
+    track.addEventListener("scroll", updateArrows, { passive: true });
+    updateArrows();
+
+    // Auto-play
+    function startAutoplay() {
+      stopAutoplay();
+      kvAutoTimer = setInterval(function() {
+        var atEnd = track.scrollLeft + track.offsetWidth >= track.scrollWidth - 4;
+        if (atEnd) {
+          track.scrollLeft = 0;
+        } else {
+          scrollNext();
+        }
+      }, 5000);
+    }
+
+    function stopAutoplay() {
+      if (kvAutoTimer) {
+        clearInterval(kvAutoTimer);
+        kvAutoTimer = null;
+      }
+    }
+
+    function pauseAutoplay() {
+      stopAutoplay();
+      if (kvAutoDelay) clearTimeout(kvAutoDelay);
+      kvAutoDelay = setTimeout(startAutoplay, 10000);
+    }
+
+    // Pause on user interaction
+    track.addEventListener("mouseenter", pauseAutoplay);
+    track.addEventListener("touchstart", pauseAutoplay, { passive: true });
+
+    // Start auto-play after 3 seconds
+    setTimeout(startAutoplay, 3000);
+
+    // Keyboard nav
+    track.addEventListener("keydown", function(e) {
+      if (e.key === "ArrowRight") { pauseAutoplay(); scrollNext(); }
+      if (e.key === "ArrowLeft") { pauseAutoplay(); scrollPrev(); }
+    });
+  })();
+
 });

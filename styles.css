@@ -1957,78 +1957,323 @@ section {
   }
 }
 
-/* --- 7. Klantquote --- */
-.testimonial {
-  background: var(--afas-bg-licht);
-  padding: 80px 0;
+/* --- 7. Klantverhalen Carousel --- */
+.klantverhalen {
+  background: var(--afas-blauw);
+  padding: 100px 0;
+  overflow: hidden;
+  position: relative;
 }
 
-.testimonial-content {
-  max-width: 900px;
+.klantverhalen-header {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
   text-align: center;
 }
 
-.testimonial-icon {
-  color: var(--afas-oranje);
-  margin-bottom: 24px;
-}
-
-.testimonial-quote {
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  line-height: 1.4;
-  color: var(--afas-antraciet);
-  margin-bottom: 24px;
-}
-
-.testimonial-sub {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--afas-tekst);
-  margin-bottom: 32px;
-}
-
-.testimonial-author {
+.klantverhalen-badge {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--afas-tekst);
+  margin-bottom: 24px;
+}
+
+.klantverhalen-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.klantverhalen-title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.klantverhalen-swoosh {
+  position: absolute;
+  bottom: -8px;
+  right: -10px;
+  width: 120px;
+  height: 16px;
+}
+
+.klantverhalen-sub {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+/* Nav arrows */
+.klantverhalen-nav--desktop {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.klantverhalen-nav--mobile {
+  display: none;
+  justify-content: center;
   gap: 16px;
-  margin-bottom: 20px;
+  margin-top: 32px;
 }
 
-.testimonial-info {
-  text-align: center;
+.klantverhalen-arrow {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.testimonial-name {
-  display: block;
+.klantverhalen-arrow:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.klantverhalen-arrow:disabled,
+.klantverhalen-arrow.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Carousel wrapper */
+.klantverhalen-wrap {
+  position: relative;
+  margin-top: 8px;
+}
+
+.klantverhalen-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.klantverhalen-fade--left {
+  left: 0;
+  background: linear-gradient(to right, var(--afas-blauw), transparent);
+}
+
+.klantverhalen-fade--right {
+  right: 0;
+  background: linear-gradient(to left, var(--afas-blauw), transparent);
+}
+
+/* Track */
+.klantverhalen-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 8px 32px 16px;
+}
+
+.klantverhalen-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Cards */
+.kv-card {
+  flex-shrink: 0;
+  width: calc((100% - 72px) / 4);
+  min-width: 260px;
+  min-height: 360px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.kv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+.kv-card__quote-icon {
+  flex-shrink: 0;
+  margin-bottom: 16px;
+}
+
+.kv-card__text {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 18px;
+  line-height: 1.4;
+  color: var(--afas-antraciet);
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+.kv-card__author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.kv-card__photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.kv-card__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.kv-card__name {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
   color: var(--afas-antraciet);
 }
 
-.testimonial-role {
-  display: block;
+.kv-card__company {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--afas-grijs-licht);
 }
 
-.testimonial-link {
-  display: inline-block;
+.kv-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #eef1f5;
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+.kv-card__badge {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--afas-blauw);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.kv-card__badge--ondernemer {
+  background: var(--afas-antraciet);
+}
+
+.kv-card__link {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
   color: var(--afas-blauw);
+  text-decoration: none;
+  transition: text-decoration 0.15s;
+}
+
+.kv-card__link:hover {
   text-decoration: underline;
 }
 
-.testimonial-link:hover {
-  color: var(--afas-oranje);
+/* Tablet */
+@media (max-width: 1024px) {
+  .kv-card {
+    width: calc((100% - 20px) / 2);
+    min-width: 280px;
+  }
+
+  .klantverhalen-track {
+    gap: 20px;
+  }
+
+  .klantverhalen-heading-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .klantverhalen-nav--desktop {
+    display: none;
+  }
+
+  .klantverhalen-nav--mobile {
+    display: flex;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .klantverhalen {
+    padding: 60px 0;
+  }
+
+  .klantverhalen-header {
+    padding: 0 20px;
+  }
+
+  .klantverhalen-track {
+    gap: 16px;
+    padding: 8px 20px 16px;
+  }
+
+  .kv-card {
+    width: calc(100% - 40px);
+    min-width: 260px;
+    min-height: 320px;
+  }
+
+  .klantverhalen-fade {
+    width: 40px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .klantverhalen-track {
+    scroll-behavior: auto;
+  }
+
+  .kv-card {
+    transition: none;
+  }
+
+  .klantverhalen-arrow {
+    transition: none;
+  }
 }
 
 /* --- 8. Stappenplan --- */

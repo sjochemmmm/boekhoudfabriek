@@ -481,23 +481,184 @@
       </div>
     </section>
 
-    <!-- ========== 7. KLANTQUOTE ========== -->
-    <section class="testimonial reveal" id="quote">
-      <div class="container testimonial-content">
-        <svg class="testimonial-icon" width="60" height="60" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M10 8c-1.1 0-2 .9-2 2v4h4V10H8c0-1.1.9-2 2-2V6C7.8 6 6 7.8 6 10v8h8V10c0-1.1-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2v4h4V10h-4c0-1.1.9-2 2-2V6c-2.2 0-4 1.8-4 4v8h8V10c0-1.1-.9-2-2-2z" fill="currentColor"/>
-        </svg>
-        <blockquote class="testimonial-quote">
-          &ldquo;Mijn dagen tijdens de piekdrukte zijn rustiger, ik hou meer energie over en heb een betere priv&eacute;-werkbalans.&rdquo;
-        </blockquote>
-        <p class="testimonial-sub">&ldquo;Met AFAS SB beheer ik als zzp&rsquo;er ruim 230 administraties. Soepel, effici&euml;nt, zonder overuren.&rdquo;</p>
-        <div class="testimonial-author">
-          <div class="testimonial-info">
-            <span class="testimonial-name">Sander van der Velde</span>
-            <span class="testimonial-role">Eigenaar Sterkveld Administratie</span>
+    <!-- ========== 7. KLANTVERHALEN CAROUSEL ========== -->
+    <section class="klantverhalen" id="klantverhalen">
+      <!-- Header -->
+      <div class="klantverhalen-header">
+        <span class="klantverhalen-badge">
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="1" y="1" width="5" height="5" rx="1" fill="#F59F39"/><rect x="8" y="1" width="5" height="5" rx="1" fill="#F59F39" opacity="0.5"/><rect x="1" y="8" width="5" height="5" rx="1" fill="#F59F39" opacity="0.5"/><rect x="8" y="8" width="5" height="5" rx="1" fill="#F59F39" opacity="0.3"/></svg>
+          KLANTERVARINGEN
+        </span>
+        <div class="klantverhalen-heading-row">
+          <h2 class="klantverhalen-title">Wat onze klanten zeggen<svg class="klantverhalen-swoosh" width="120" height="16" viewBox="0 0 120 16" aria-hidden="true"><path d="M2 12 C30 2, 60 2, 90 12 S118 4, 118 4" stroke="#F59F39" stroke-width="3" fill="none" stroke-linecap="round"/></svg></h2>
+          <div class="klantverhalen-nav klantverhalen-nav--desktop">
+            <button class="klantverhalen-arrow klantverhalen-arrow--prev" id="kvPrev" aria-label="Vorige klantverhalen">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M13 4l-6 6 6 6" stroke="var(--afas-blauw)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="klantverhalen-arrow klantverhalen-arrow--next" id="kvNext" aria-label="Volgende klantverhalen">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 4l6 6-6 6" stroke="var(--afas-blauw)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
         </div>
-        <a href="https://www.afas.nl/klantverhaal/sterkveld-administratie" target="_blank" rel="noopener noreferrer" class="testimonial-link">Lees het hele verhaal van Sterkveld</a>
+        <p class="klantverhalen-sub">Laat je inspireren door verhalen van ondernemers en accountants die succesvol werken met AFAS SB.</p>
+      </div>
+
+      <!-- Carousel wrapper with fades -->
+      <div class="klantverhalen-wrap">
+        <div class="klantverhalen-fade klantverhalen-fade--left"></div>
+        <div class="klantverhalen-fade klantverhalen-fade--right"></div>
+
+        <div class="klantverhalen-track" id="kvTrack">
+          <!-- Kaart 1 -->
+          <article class="kv-card">
+            <svg class="kv-card__quote-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 28c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4zm16 0c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4z" fill="#F59F39"/></svg>
+            <p class="kv-card__text">&ldquo;Werken met AFAS SB zorgt ervoor dat ik een relatief grote hoeveelheid klanten soepel kan bedienen.&rdquo;</p>
+            <div class="kv-card__author">
+              <img src="https://cdn.prod.website-files.com/686bb58c87270569bd560d03/68b6febcb150132fdc2a4a82_mobiel%203.jpg" alt="Sander van der Velde – Sterkveld Administratie" class="kv-card__photo" loading="lazy" width="60" height="60"/>
+              <div class="kv-card__info"><span class="kv-card__name">Sander van der Velde</span><span class="kv-card__company">Sterkveld Administratie</span></div>
+            </div>
+            <div class="kv-card__footer">
+              <span class="kv-card__badge">ACCOUNTANT</span>
+              <a href="https://www.afas-sb.nl/ervaring/sterkveld-administratie" target="_blank" rel="noopener noreferrer" class="kv-card__link">Lees meer &rsaquo;</a>
+            </div>
+          </article>
+
+          <!-- Kaart 2 -->
+          <article class="kv-card">
+            <svg class="kv-card__quote-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 28c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4zm16 0c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4z" fill="#F59F39"/></svg>
+            <p class="kv-card__text">&ldquo;Sinds de overstap naar AFAS SB behoren stressvolle piekmomenten tot het verleden.&rdquo;</p>
+            <div class="kv-card__author">
+              <img src="https://cdn.prod.website-files.com/686bb58c87270569bd560d03/68b6fcacf20fd5008994ac8e_Adfiadon.jpg" alt="Jordy Gorseling – Adfiadon" class="kv-card__photo" loading="lazy" width="60" height="60"/>
+              <div class="kv-card__info"><span class="kv-card__name">Jordy Gorseling</span><span class="kv-card__company">Adfiadon</span></div>
+            </div>
+            <div class="kv-card__footer">
+              <span class="kv-card__badge">ACCOUNTANT</span>
+              <a href="https://www.afas-sb.nl/ervaring/adfiadon" target="_blank" rel="noopener noreferrer" class="kv-card__link">Lees meer &rsaquo;</a>
+            </div>
+          </article>
+
+          <!-- Kaart 3 -->
+          <article class="kv-card">
+            <svg class="kv-card__quote-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 28c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4zm16 0c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4z" fill="#F59F39"/></svg>
+            <p class="kv-card__text">&ldquo;Met de informatie uit het systeem ben je iedereen altijd een stap voor.&rdquo;</p>
+            <div class="kv-card__author">
+              <img src="https://cdn.prod.website-files.com/686bb58c87270569bd560d03/68b6f9458a83c8c66ecac61c_cijfer-studio-1.jpg" alt="Anne-Corinne van Geest – Cijfer Studio" class="kv-card__photo" loading="lazy" width="60" height="60"/>
+              <div class="kv-card__info"><span class="kv-card__name">Anne-Corinne van Geest</span><span class="kv-card__company">Cijfer Studio</span></div>
+            </div>
+            <div class="kv-card__footer">
+              <span class="kv-card__badge">ACCOUNTANT</span>
+              <a href="https://www.afas-sb.nl/ervaring/cijfer-studio" target="_blank" rel="noopener noreferrer" class="kv-card__link">Lees meer &rsaquo;</a>
+            </div>
+          </article>
+
+          <!-- Kaart 4 -->
+          <article class="kv-card">
+            <svg class="kv-card__quote-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 28c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4zm16 0c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4z" fill="#F59F39"/></svg>
+            <p class="kv-card__text">&ldquo;Al sinds we zijn begonnen met ondernemen, zijn we bezig met automatisering.&rdquo;</p>
+            <div class="kv-card__author">
+              <img src="https://cdn.prod.website-files.com/686bb58c87270569bd560d03/687e20bcfcbe1dd6259ee82e_Voorne%20(1).jpg" alt="Peter Vrij – Voorne's Plantenkwekerij" class="kv-card__photo" loading="lazy" width="60" height="60"/>
+              <div class="kv-card__info"><span class="kv-card__name">Peter Vrij</span><span class="kv-card__company">Voorne&rsquo;s Plantenkwekerij</span></div>
+            </div>
+            <div class="kv-card__footer">
+              <span class="kv-card__badge kv-card__badge--ondernemer">ONDERNEMER</span>
+              <a href="https://www.afas-sb.nl/ervaring/voornes-plantenkwekerij" target="_blank" rel="noopener noreferrer" class="kv-card__link">Lees meer &rsaquo;</a>
+            </div>
+          </article>
+
+          <!-- Kaart 5 -->
+          <article class="kv-card">
+            <svg class="kv-card__quote-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 28c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4zm16 0c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4z" fill="#F59F39"/></svg>
+            <p class="kv-card__text">&ldquo;Investeer in technologie om effici&euml;ntie te verhogen en de klantbeleving te optimaliseren.&rdquo;</p>
+            <div class="kv-card__author">
+              <img src="https://cdn.prod.website-files.com/686bb58c87270569bd560d03/687e00b6ad8c5320b06579f2_Padelmate%20(1).jpg" alt="Gustavo en Gianni – Padelmate" class="kv-card__photo" loading="lazy" width="60" height="60"/>
+              <div class="kv-card__info"><span class="kv-card__name">Gustavo en Gianni</span><span class="kv-card__company">Padelmate</span></div>
+            </div>
+            <div class="kv-card__footer">
+              <span class="kv-card__badge kv-card__badge--ondernemer">ONDERNEMER</span>
+              <a href="https://www.afas-sb.nl/ervaring/padelmate" target="_blank" rel="noopener noreferrer" class="kv-card__link">Lees meer &rsaquo;</a>
+            </div>
+          </article>
+
+          <!-- Kaart 6 -->
+          <article class="kv-card">
+            <svg class="kv-card__quote-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 28c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4zm16 0c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4z" fill="#F59F39"/></svg>
+            <p class="kv-card__text">&ldquo;Naast dat het pakket er heel modern uitziet, stond ik echt te kijken van de voordelen.&rdquo;</p>
+            <div class="kv-card__author">
+              <img src="https://cdn.prod.website-files.com/686bb58c87270569bd560d03/687e26929efcdd6ae41f2785_Luca%20Book%20(1).jpg" alt="Hans Bracke – Luca Book" class="kv-card__photo" loading="lazy" width="60" height="60"/>
+              <div class="kv-card__info"><span class="kv-card__name">Hans Bracke</span><span class="kv-card__company">Luca Book</span></div>
+            </div>
+            <div class="kv-card__footer">
+              <span class="kv-card__badge">ACCOUNTANT</span>
+              <a href="https://www.afas-sb.nl/ervaring/luca-book" target="_blank" rel="noopener noreferrer" class="kv-card__link">Lees meer &rsaquo;</a>
+            </div>
+          </article>
+
+          <!-- Kaart 7 -->
+          <article class="kv-card">
+            <svg class="kv-card__quote-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 28c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4zm16 0c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4z" fill="#F59F39"/></svg>
+            <p class="kv-card__text">&ldquo;In 15 minuten per week is je administratie up-to-date.&rdquo;</p>
+            <div class="kv-card__author">
+              <img src="https://cdn.prod.website-files.com/686bb58c87270569bd560d03/687e257dde9ca2f027b2d125_Dutch%20Nomad%20Couple.jpg" alt="Tino Kreijns – Dutch Nomad Couple" class="kv-card__photo" loading="lazy" width="60" height="60"/>
+              <div class="kv-card__info"><span class="kv-card__name">Tino Kreijns</span><span class="kv-card__company">Dutch Nomad Couple</span></div>
+            </div>
+            <div class="kv-card__footer">
+              <span class="kv-card__badge kv-card__badge--ondernemer">ONDERNEMER</span>
+              <a href="https://www.afas-sb.nl/ervaring/dutch-nomad-couple" target="_blank" rel="noopener noreferrer" class="kv-card__link">Lees meer &rsaquo;</a>
+            </div>
+          </article>
+
+          <!-- Kaart 8 -->
+          <article class="kv-card">
+            <svg class="kv-card__quote-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 28c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4zm16 0c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4z" fill="#F59F39"/></svg>
+            <p class="kv-card__text">&ldquo;Met SB is mijn boekhouding helemaal in balans.&rdquo;</p>
+            <div class="kv-card__author">
+              <img src="https://cdn.prod.website-files.com/686bb58c87270569bd560d03/687e2496edef7fc1e04b54f6_Casper%20Lange%20(1).jpg" alt="Casper Lange – YamaYoga" class="kv-card__photo" loading="lazy" width="60" height="60"/>
+              <div class="kv-card__info"><span class="kv-card__name">Casper Lange</span><span class="kv-card__company">YamaYoga</span></div>
+            </div>
+            <div class="kv-card__footer">
+              <span class="kv-card__badge kv-card__badge--ondernemer">ONDERNEMER</span>
+              <a href="https://www.afas-sb.nl/ervaring/yamayoga" target="_blank" rel="noopener noreferrer" class="kv-card__link">Lees meer &rsaquo;</a>
+            </div>
+          </article>
+
+          <!-- Kaart 9 -->
+          <article class="kv-card">
+            <svg class="kv-card__quote-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 28c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4zm16 0c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4z" fill="#F59F39"/></svg>
+            <p class="kv-card__text">&ldquo;AFAS SB blijft innoveren.&rdquo;</p>
+            <div class="kv-card__author">
+              <img src="https://cdn.prod.website-files.com/686bb58c87270569bd560d03/687e238b38705337675614bc_Jeroen%20Berger%20(1).jpg" alt="Jeroen Berger – Enwijdoenderest" class="kv-card__photo" loading="lazy" width="60" height="60"/>
+              <div class="kv-card__info"><span class="kv-card__name">Jeroen Berger</span><span class="kv-card__company">Enwijdoenderest</span></div>
+            </div>
+            <div class="kv-card__footer">
+              <span class="kv-card__badge">ACCOUNTANT</span>
+              <a href="https://www.afas-sb.nl/ervaring/enwijdoenderest" target="_blank" rel="noopener noreferrer" class="kv-card__link">Lees meer &rsaquo;</a>
+            </div>
+          </article>
+
+          <!-- Kaart 10 -->
+          <article class="kv-card">
+            <svg class="kv-card__quote-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 28c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4zm16 0c-2.2 0-4-1.8-4-4v-2c0-4.4 3.6-8 8-8v4c-2.2 0-4 1.8-4 4h4v8h-4z" fill="#F59F39"/></svg>
+            <p class="kv-card__text">&ldquo;Ik verdien de kosten van SB meteen terug.&rdquo;</p>
+            <div class="kv-card__author">
+              <img src="https://cdn.prod.website-files.com/686bb58c87270569bd560d03/687e22ce804ecf689ba7ced3_Arvid.jpg" alt="Arvid Kastermans – Studio Kastermans" class="kv-card__photo" loading="lazy" width="60" height="60"/>
+              <div class="kv-card__info"><span class="kv-card__name">Arvid Kastermans</span><span class="kv-card__company">Studio Kastermans</span></div>
+            </div>
+            <div class="kv-card__footer">
+              <span class="kv-card__badge kv-card__badge--ondernemer">ONDERNEMER</span>
+              <a href="https://www.afas-sb.nl/ervaring/studio-kastermans" target="_blank" rel="noopener noreferrer" class="kv-card__link">Lees meer &rsaquo;</a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Mobile nav -->
+      <div class="klantverhalen-nav klantverhalen-nav--mobile">
+        <button class="klantverhalen-arrow klantverhalen-arrow--prev" id="kvPrevMobile" aria-label="Vorige klantverhalen">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M13 4l-6 6 6 6" stroke="var(--afas-blauw)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="klantverhalen-arrow klantverhalen-arrow--next" id="kvNextMobile" aria-label="Volgende klantverhalen">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 4l6 6-6 6" stroke="var(--afas-blauw)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
     </section>
 
