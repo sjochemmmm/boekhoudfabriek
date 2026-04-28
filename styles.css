@@ -300,9 +300,15 @@ section {
   height: 90vh;
   display: flex;
   align-items: center;
-  background: url('images/AZE%20MAB%20IVA%20CHO%20OVERLEG%20VERGADERRUIMTE%20WHITEBOARD%20(3).JPG') center / cover no-repeat;
   padding: 0;
   overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: -60px 0 0 0;
+  background: url('images/AZE%20MAB%20IVA%20CHO%20OVERLEG%20VERGADERRUIMTE%20WHITEBOARD%20(3).JPG') center / cover no-repeat;
+  will-change: transform;
 }
 
 .hero-overlay {
@@ -317,6 +323,7 @@ section {
   z-index: 1;
   max-width: 900px;
   color: var(--afas-wit);
+  will-change: opacity;
 }
 
 .hero h1 {

@@ -259,14 +259,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Scroll progress bar ---
   const progressBar = document.getElementById("scroll-progress");
-  if (progressBar && !prefersReducedMotion) {
-    window.addEventListener("scroll", () => {
-      const scrollTop = document.documentElement.scrollTop;
+
+  // --- Hero parallax ---
+  const heroBg = document.getElementById("hero-bg");
+  const heroContent = document.querySelector(".hero-content");
+  const heroSection = document.getElementById("hero");
+  const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+  let ticking = false;
+
+  function onScroll() {
+    const scrollY = window.scrollY;
+
+    // Progress bar
+    if (progressBar && !prefersReducedMotion) {
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      const pct = scrollHeight > 0 ? (scrollY / scrollHeight) * 100 : 0;
       progressBar.style.width = pct + "%";
-    }, { passive: true });
+    }
+
+    // Hero parallax (desktop only)
+    if (isDesktop && !prefersReducedMotion && heroSection) {
+      const heroH = heroSection.offsetHeight;
+      if (scrollY <= heroH) {
+        const scale = 1 + (scrollY / 600) * 0.05;
+        if (heroBg) {
+          heroBg.style.transform = "translateY(" + (scrollY * 0.4) + "px) scale(" + Math.min(scale, 1.05) + ")";
+        }
+        if (heroContent) {
+          const opacity = 1 - (scrollY / heroH) * 0.7;
+          heroContent.style.opacity = Math.max(opacity, 0.3);
+        }
+      }
+    }
+
+    ticking = false;
   }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
 
   // --- Magnetic buttons ---
   const canHover = window.matchMedia("(hover: hover)").matches;
