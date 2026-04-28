@@ -59,19 +59,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const schuifData = [
     {
-      min: 0, max: 30,
+      min: 0, max: 25,
       cls: "schuif-result--boekhouden",
       name: "Boekhouden",
       desc: "Jij voert de hele administratie. Je klant levert bonnetjes aan via de AFAS Link app en accordeert aangiftes. Volledige ontzorging."
     },
     {
-      min: 31, max: 70,
+      min: 26, max: 80,
       cls: "schuif-result--together",
       name: "2Gether",
       desc: "Een logische rolverdeling. Je klant doet zijn dagelijkse zaken zoals factureren en bonnen scannen. Jij houdt regie op de boekhouding en doet de aangiftes en jaarrekening."
     },
     {
-      min: 71, max: 100,
+      min: 81, max: 100,
       cls: "schuif-result--ondernemen",
       name: "Ondernemen",
       desc: "Je klant doet alles zelf in zijn eigen omgeving. Jij kijkt periodiek mee als vierde oog en geeft advies. Eindcontrole en jaarrekening blijven bij jou."
