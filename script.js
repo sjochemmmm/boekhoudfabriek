@@ -257,4 +257,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // --- Scroll progress bar ---
+  const progressBar = document.getElementById("scroll-progress");
+  if (progressBar && !prefersReducedMotion) {
+    window.addEventListener("scroll", () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      progressBar.style.width = pct + "%";
+    }, { passive: true });
+  }
+
+  // --- Magnetic buttons ---
+  const canHover = window.matchMedia("(hover: hover)").matches;
+  if (canHover && !prefersReducedMotion) {
+    document.querySelectorAll(".btn-primary").forEach((btn) => {
+      btn.addEventListener("mousemove", (e) => {
+        const rect = btn.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 80) {
+          btn.style.transform = "translate(" + (dx * 0.2) + "px, " + (dy * 0.2) + "px)";
+        }
+      });
+      btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "translate(0, 0)";
+      });
+    });
+  }
+
 });

@@ -2182,3 +2182,30 @@ section {
     transition: none;
   }
 }
+
+/* --- Scroll progress bar --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: var(--afas-oranje);
+  z-index: 1001;
+  transition: width 0.1s ease-out;
+  pointer-events: none;
+}
+
+/* --- Magnetic buttons --- */
+.btn-primary {
+  transition: background 0.2s ease, color 0.2s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress {
+    display: none;
+  }
+  .btn-primary {
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+}
