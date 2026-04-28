@@ -347,15 +347,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const werkdagData = [
     {
       fase: "Start van de dag",
-      profit: "Mailbox checken. 14 mailtjes van klanten met bonnetjes en vragen. Bijlages downloaden, sorteren, op de juiste plek zetten.",
+      profit: "Mailbox checken. 14 mailtjes van klanten met bonnetjes en vragen. Bijlages downloaden, sorteren, handmatig op de juiste plek in de klantadministratie zetten.",
       sb: "Admin Center openen. Ik zie direct welke klanten vandaag aandacht nodig hebben. Bonnen staan al in het systeem via de AFAS Link app.",
       stressProfit: 14,
       stressSB: 3
     },
     {
       fase: "Btw-aangifte voorbereiden",
-      profit: "Per administratie inloggen, btw-overzicht draaien, controleren, exporteren naar Excel, rondrekening handmatig maken.",
-      sb: "Btw-rondrekening verschijnt automatisch. Ik check de afwijkingen die SB heeft gesignaleerd. Goedkeuren, klaar.",
+      profit: "Per klantadministratie schakelen via grootboekrekeningen, btw-overzicht draaien, controleren, exporteren naar Excel. De rondrekening reken ik handmatig na, want die is er niet.",
+      sb: "Per klant een eigen administratie, gebouwd op het Referentie Grootboekschema (RGS). De btw-rondrekening verschijnt automatisch. Ik check de afwijkingen die SB heeft gesignaleerd. Goedkeuren, klaar.",
       stressProfit: 11,
       stressSB: 2
     },
@@ -368,15 +368,15 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       fase: "Klant belt met vraag",
-      profit: "Klant vraagt naar een factuur. Ik zoek in de mail, in hun map, in mijn systeem. Even terugbellen.",
-      sb: "Klant ziet het zelf in zijn dashboard. Ik kijk mee in dezelfde administratie. Vraag direct beantwoord.",
+      profit: "Klant vraagt naar een factuur. Ik zoek in de mail, in de klantmap, in Profit. Geen klanttoegang, dus ik moet het opzoeken en terugbellen.",
+      sb: "Klant ziet het zelf in zijn eigen dashboard. Ik kijk mee in dezelfde administratie. Vraag direct beantwoord.",
       stressProfit: 8,
       stressSB: 1
     },
     {
       fase: "Jaarrekening maken",
-      profit: "Cijfers verzamelen, kruisverbanden controleren, exports maken, Word-document opmaken, PDF genereren.",
-      sb: "Klik op \u2018Jaarrekening genereren\u2019. SB doet het op basis van RGS. Ik check, pas wat tekst aan, klaar.",
+      profit: "Cijfers verzamelen uit de klantadministratie, kruisverbanden controleren, exports maken, Word-document opmaken, PDF genereren.",
+      sb: "Klik op \u2018Jaarrekening genereren\u2019. Doordat SB op het Referentie Grootboekschema (RGS) draait, staan alle posten op de juiste plek. Ik check, pas wat tekst aan, klaar.",
       stressProfit: 6,
       stressSB: 1
     },
