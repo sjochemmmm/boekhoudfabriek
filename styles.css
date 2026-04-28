@@ -1015,6 +1015,31 @@ section {
   text-align: center;
 }
 
+.schuif-screenshot {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.schuif-screenshot__label {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--afas-oranje);
+  margin-bottom: 12px;
+}
+
+.schuif-screenshot__img {
+  display: block;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
 .schuif-labels {
   display: flex;
   justify-content: space-between;
