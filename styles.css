@@ -967,7 +967,7 @@ section {
   border: 2px solid var(--afas-bg-licht);
   border-radius: 12px;
   padding: 40px;
-  overflow: hidden;
+  overflow: visible;
   transition: box-shadow 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
@@ -991,12 +991,21 @@ section {
 }
 
 .smaak-card--featured {
-  border-color: var(--afas-oranje);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--afas-oranje);
+  box-shadow:
+    0 4px 16px rgba(245, 159, 57, 0.2),
+    0 12px 40px rgba(245, 159, 57, 0.15),
+    inset 0 0 0 1px rgba(245, 159, 57, 0.08);
+  transform: scale(1.03);
+  z-index: 2;
 }
 
 .smaak-card--featured:hover {
-  box-shadow: 0 30px 60px rgba(245, 159, 57, 0.3);
+  box-shadow:
+    0 8px 24px rgba(245, 159, 57, 0.3),
+    0 20px 60px rgba(245, 159, 57, 0.2),
+    inset 0 0 0 1px rgba(245, 159, 57, 0.12);
+  transform: scale(1.05);
 }
 
 .smaak-icon {
@@ -1009,7 +1018,7 @@ section {
 
 .smaak-badge {
   position: absolute;
-  top: -14px;
+  top: -16px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--afas-oranje);
@@ -1019,9 +1028,11 @@ section {
   font-size: 12px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 6px 20px;
+  padding: 8px 24px;
   border-radius: 100px;
   white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(245, 159, 57, 0.35);
+  z-index: 3;
 }
 
 .smaak-type {
