@@ -792,6 +792,132 @@ section {
 
 }
 
+/* --- 3b-bis. AI Versneller --- */
+.ai-versneller {
+  background: var(--afas-bg-licht);
+  padding: 100px 0;
+}
+
+.ai-versneller-label {
+  display: block;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--afas-oranje);
+  margin-bottom: 16px;
+}
+
+.ai-versneller-title {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--afas-antraciet);
+  margin-bottom: 16px;
+}
+
+.ai-versneller-intro {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--afas-tekst);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.ai-versneller-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 60px;
+}
+
+.ai-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ai-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+
+.ai-card__icon {
+  margin-bottom: 20px;
+}
+
+.ai-card__icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.ai-card__title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--afas-antraciet);
+  margin-bottom: 12px;
+}
+
+.ai-card__text {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--afas-tekst);
+}
+
+.ai-versneller-statement {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--afas-tekst);
+  max-width: 800px;
+  margin: 60px auto 16px;
+  line-height: 1.5;
+}
+
+.ai-versneller-link {
+  display: block;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  color: var(--afas-blauw);
+  text-decoration: none;
+  transition: text-decoration 0.15s;
+}
+
+.ai-versneller-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .ai-versneller {
+    padding: 60px 0;
+  }
+
+  .ai-versneller-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-card {
+    transition: none;
+  }
+}
+
 /* --- 3c-bis. Schuif (slider) --- */
 .schuif {
   background: var(--afas-bg-licht);
