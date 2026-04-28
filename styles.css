@@ -427,11 +427,14 @@ section {
   gap: 32px;
   max-width: 1280px;
   margin: 0 auto;
+  align-items: stretch;
 }
 
 .manifest-block {
   padding: 32px;
   border-radius: 0 0 8px 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .manifest-block--werkt {
@@ -507,15 +510,23 @@ section {
   color: var(--afas-tekst);
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
 }
 
-.manifest-block__minus {
-  color: var(--afas-oranje);
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.4;
+.manifest-block--kan .manifest-block__item {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.manifest-block__icon {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  margin-top: 1px;
+}
+
+.manifest-block__icon svg {
+  width: 20px;
+  height: 20px;
 }
 
 .manifest-block__closing {
@@ -641,7 +652,7 @@ section {
 
 .visie-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 48px 40px;
   margin-top: 60px;
 }
@@ -825,14 +836,61 @@ section {
 }
 
 .visie-statement {
+  display: none;
+}
+
+/* --- Visie Statement Block --- */
+.visie-statement-block {
+  background: var(--afas-blauw);
+  padding: 60px 0;
   text-align: center;
+}
+
+.visie-statement-line1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 28px;
+  color: var(--afas-wit);
+  margin-bottom: 8px;
+}
+
+.visie-statement-line2 {
   font-family: "Roboto", sans-serif;
   font-weight: 900;
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--afas-oranje);
+}
+
+/* --- Visie Block Image --- */
+.visie-block__image {
+  margin-top: 20px;
+}
+
+.visie-block__img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.visie-block__caption {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 8px;
   font-style: italic;
-  opacity: 0.95;
-  margin-top: 60px;
-  line-height: 1.3;
+}
+
+/* --- Stappenplan intro --- */
+.steps-pre {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--afas-tekst);
+  margin-bottom: 12px;
 }
 
 @media (max-width: 767px) {
@@ -845,6 +903,9 @@ section {
     font-size: 20px;
   }
 
+  .visie-block__img {
+    max-width: 100%;
+  }
 }
 
 /* --- 3b-bis. AI Versneller --- */
@@ -1978,6 +2039,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
+  gap: 80px;
 }
 
 .stat-card {
@@ -1985,7 +2047,7 @@ section {
 }
 
 .stat-card + .stat-card {
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .stat-number {
@@ -2015,14 +2077,22 @@ section {
   line-height: 1.4;
 }
 
+@media (max-width: 1024px) {
+  .stats-grid {
+    gap: 60px;
+  }
+}
+
 @media (max-width: 767px) {
   .stats-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
 
   .stat-card + .stat-card {
     border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 40px;
   }
 }
 

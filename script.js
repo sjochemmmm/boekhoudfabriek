@@ -48,64 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // --- Schuif (slider) ---
-  const slider = document.getElementById("schuif-slider");
-  const pctJij = document.getElementById("schuif-pct-jij");
-  const pctKlant = document.getElementById("schuif-pct-klant");
-  const result = document.getElementById("schuif-result");
-  const resultLabel = document.getElementById("schuif-result-label");
-  const resultName = document.getElementById("schuif-result-name");
-  const resultDesc = document.getElementById("schuif-result-desc");
-
-  const schuifData = [
-    {
-      min: 0, max: 25,
-      cls: "schuif-result--boekhouden",
-      name: "Boekhouden",
-      desc: "Jij voert de hele administratie. Je klant levert bonnetjes aan via de AFAS Link app en accordeert aangiftes. Volledige ontzorging."
-    },
-    {
-      min: 26, max: 80,
-      cls: "schuif-result--together",
-      name: "2Gether",
-      desc: "Een logische rolverdeling. Je klant doet zijn dagelijkse zaken zoals factureren en bonnen scannen. Jij houdt regie op de boekhouding en doet de aangiftes en jaarrekening."
-    },
-    {
-      min: 81, max: 100,
-      cls: "schuif-result--ondernemen",
-      name: "Ondernemen",
-      desc: "Je klant doet alles zelf in zijn eigen omgeving. Jij kijkt periodiek mee als vierde oog en geeft advies. Eindcontrole en jaarrekening blijven bij jou."
-    }
-  ];
-
-  let currentSmaak = "";
-
-  function updateSchuif() {
-    const val = parseInt(slider.value, 10);
-    const jij = 100 - val;
-
-    pctJij.textContent = jij + "% jij";
-    pctKlant.textContent = val + "% klant";
-
-    const match = schuifData.find((d) => val >= d.min && val <= d.max);
-    if (match && match.cls !== currentSmaak) {
-      currentSmaak = match.cls;
-      result.className = "schuif-result " + match.cls;
-      resultLabel.textContent = "DIT PAST BIJ JOU";
-      resultName.textContent = match.name;
-      resultDesc.style.animation = "none";
-      // Force reflow to restart animation
-      void resultDesc.offsetWidth;
-      resultDesc.style.animation = "";
-      resultDesc.textContent = match.desc;
-    }
-  }
-
-  if (slider) {
-    slider.addEventListener("input", updateSchuif);
-    updateSchuif();
-  }
-
   // --- Rekentool ---
   const calcAdmins = document.getElementById("calc-admins");
   const calcUren = document.getElementById("calc-uren");
@@ -142,8 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let prevUren = 0, prevWaarde = 0, prevExtra = 0;
+  let rekentoolRevealed = false;
 
-  function updateRekentool() {
+  function calcValues() {
     const admins = parseFloat(calcAdmins.value) || 0;
     const urenPerAdmin = parseFloat(calcUren.value) || 0;
     const tarief = parseFloat(calcTarief.value) || 0;
@@ -154,20 +97,54 @@ document.addEventListener("DOMContentLoaded", () => {
     const urenJaar = urenPerAdmin * 12;
     const extraAdmins = urenJaar > 0 ? Math.floor(besparing / urenJaar) : 0;
 
-    animateValue(resultUren, prevUren, besparing, 600, (v) => numFormat.format(v));
-    animateValue(resultWaarde, prevWaarde, waardeBesparing, 600, (v) => euroFormat.format(v));
-    animateValue(resultExtra, prevExtra, extraAdmins, 600, (v) => numFormat.format(v));
+    return { besparing, waardeBesparing, extraAdmins };
+  }
 
-    prevUren = besparing;
-    prevWaarde = waardeBesparing;
-    prevExtra = extraAdmins;
+  function setRekentoolStatic() {
+    const v = calcValues();
+    resultUren.textContent = numFormat.format(v.besparing);
+    resultWaarde.textContent = euroFormat.format(v.waardeBesparing);
+    resultExtra.textContent = numFormat.format(v.extraAdmins);
+    prevUren = v.besparing;
+    prevWaarde = v.waardeBesparing;
+    prevExtra = v.extraAdmins;
+  }
+
+  function updateRekentool(animate) {
+    const v = calcValues();
+    const dur = animate ? 1200 : 600;
+
+    animateValue(resultUren, animate ? 0 : prevUren, v.besparing, dur, (val) => numFormat.format(val));
+    animateValue(resultWaarde, animate ? 0 : prevWaarde, v.waardeBesparing, dur, (val) => euroFormat.format(val));
+    animateValue(resultExtra, animate ? 0 : prevExtra, v.extraAdmins, dur, (val) => numFormat.format(val));
+
+    prevUren = v.besparing;
+    prevWaarde = v.waardeBesparing;
+    prevExtra = v.extraAdmins;
   }
 
   if (calcAdmins && calcUren && calcTarief) {
+    // Show correct static values immediately
+    setRekentoolStatic();
+
     [calcAdmins, calcUren, calcTarief].forEach((input) => {
-      input.addEventListener("input", updateRekentool);
+      input.addEventListener("input", () => updateRekentool(false));
     });
-    updateRekentool();
+
+    // Animate from 0 when section scrolls into view
+    const rekentoolSection = document.getElementById("rekentool");
+    if (rekentoolSection) {
+      const rekentoolObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !rekentoolRevealed) {
+            rekentoolRevealed = true;
+            updateRekentool(true);
+            rekentoolObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      rekentoolObserver.observe(rekentoolSection);
+    }
   }
 
   // --- Scroll-reveal (Intersection Observer) ---
@@ -393,9 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const werkdagProfitEl = document.getElementById("werkdagProfit");
   const werkdagSBEl = document.getElementById("werkdagSB");
   const werkdagFaseEl = document.getElementById("werkdagFase");
-  const werkdagAutoplayBtn = document.getElementById("werkdagAutoplay");
   let werkdagIndex = 0;
-  let werkdagInterval = null;
 
   function setWerkdagSlide(index) {
     werkdagIndex = index;
@@ -444,56 +419,9 @@ document.addEventListener("DOMContentLoaded", () => {
   werkdagDots.forEach(function(dot) {
     dot.addEventListener("click", function() {
       var idx = parseInt(dot.getAttribute("data-index"), 10);
-      stopWerkdagAutoplay();
       setWerkdagSlide(idx);
     });
   });
-
-  function stopWerkdagAutoplay() {
-    if (werkdagInterval) {
-      clearInterval(werkdagInterval);
-      werkdagInterval = null;
-    }
-    if (werkdagAutoplayBtn) {
-      werkdagAutoplayBtn.classList.remove("is-playing");
-      var playIcon = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__icon--play");
-      var pauseIcon = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__icon--pause");
-      var textEl = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__text");
-      if (playIcon) playIcon.style.display = "";
-      if (pauseIcon) pauseIcon.style.display = "none";
-      if (textEl) textEl.textContent = "Speel de hele dag af";
-    }
-  }
-
-  function startWerkdagAutoplay() {
-    stopWerkdagAutoplay();
-    werkdagAutoplayBtn.classList.add("is-playing");
-    var playIcon = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__icon--play");
-    var pauseIcon = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__icon--pause");
-    var textEl = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__text");
-    if (playIcon) playIcon.style.display = "none";
-    if (pauseIcon) pauseIcon.style.display = "";
-    if (textEl) textEl.textContent = "Pauzeer";
-
-    werkdagInterval = setInterval(function() {
-      var next = (werkdagIndex + 1) % werkdagData.length;
-      setWerkdagSlide(next);
-      if (next === werkdagData.length - 1) {
-        // Stop after completing full cycle
-        setTimeout(stopWerkdagAutoplay, 3000);
-      }
-    }, 3000);
-  }
-
-  if (werkdagAutoplayBtn) {
-    werkdagAutoplayBtn.addEventListener("click", function() {
-      if (werkdagInterval) {
-        stopWerkdagAutoplay();
-      } else {
-        startWerkdagAutoplay();
-      }
-    });
-  }
 
   // --- Klantverhalen Carousel ---
   (function() {
