@@ -343,4 +343,156 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- Werkdag tijdlijn ---
+  const werkdagData = [
+    {
+      fase: "Start van de dag",
+      profit: "Mailbox checken. 14 mailtjes van klanten met bonnetjes en vragen. Bijlages downloaden, sorteren, op de juiste plek zetten.",
+      sb: "Admin Center openen. Ik zie direct welke klanten vandaag aandacht nodig hebben. Bonnen staan al in het systeem via de AFAS Link app.",
+      stressProfit: 14,
+      stressSB: 3
+    },
+    {
+      fase: "Btw-aangifte voorbereiden",
+      profit: "Per administratie inloggen, btw-overzicht draaien, controleren, exporteren naar Excel, rondrekening handmatig maken.",
+      sb: "Btw-rondrekening verschijnt automatisch. Ik check de afwijkingen die SB heeft gesignaleerd. Goedkeuren, klaar.",
+      stressProfit: 11,
+      stressSB: 2
+    },
+    {
+      fase: "Lunch",
+      profit: "Snel even, want vanmiddag moet ik nog drie jaarrekeningen in elkaar zetten.",
+      sb: "Rustig. Drie jaarrekeningen staan al klaar, alleen nog controleren vanmiddag.",
+      stressProfit: 9,
+      stressSB: 2
+    },
+    {
+      fase: "Klant belt met vraag",
+      profit: "Klant vraagt naar een factuur. Ik zoek in de mail, in hun map, in mijn systeem. Even terugbellen.",
+      sb: "Klant ziet het zelf in zijn dashboard. Ik kijk mee in dezelfde administratie. Vraag direct beantwoord.",
+      stressProfit: 8,
+      stressSB: 1
+    },
+    {
+      fase: "Jaarrekening maken",
+      profit: "Cijfers verzamelen, kruisverbanden controleren, exports maken, Word-document opmaken, PDF genereren.",
+      sb: "Klik op \u2018Jaarrekening genereren\u2019. SB doet het op basis van RGS. Ik check, pas wat tekst aan, klaar.",
+      stressProfit: 6,
+      stressSB: 1
+    },
+    {
+      fase: "Einde werkdag",
+      profit: "Lijstje van morgen maken. Gisteren ben ik tot 19:00 doorgegaan. Vandaag hopelijk niet.",
+      sb: "Laptop dicht. Klanten hebben hun cijfers gezien, jaarrekeningen liggen klaar. Tijd voor thuis.",
+      stressProfit: 5,
+      stressSB: 0
+    }
+  ];
+
+  const werkdagDots = document.querySelectorAll(".werkdag-dot");
+  const werkdagProfitEl = document.getElementById("werkdagProfit");
+  const werkdagSBEl = document.getElementById("werkdagSB");
+  const werkdagFaseEl = document.getElementById("werkdagFase");
+  const werkdagAutoplayBtn = document.getElementById("werkdagAutoplay");
+  let werkdagIndex = 0;
+  let werkdagInterval = null;
+
+  function setWerkdagSlide(index) {
+    werkdagIndex = index;
+    var d = werkdagData[index];
+
+    // Update dots
+    werkdagDots.forEach(function(dot, i) {
+      dot.classList.toggle("is-active", i === index);
+      dot.setAttribute("aria-selected", i === index ? "true" : "false");
+    });
+
+    // Fase title
+    if (werkdagFaseEl) werkdagFaseEl.textContent = d.fase;
+
+    if (prefersReducedMotion) {
+      // Direct swap
+      if (werkdagProfitEl) {
+        werkdagProfitEl.innerHTML = '<p class="werkdag-col__text">' + d.profit + '</p>' +
+          '<span class="werkdag-stress">Openstaande taken: <strong>' + d.stressProfit + '</strong></span>';
+      }
+      if (werkdagSBEl) {
+        werkdagSBEl.innerHTML = '<p class="werkdag-col__text">' + d.sb + '</p>' +
+          (d.stressSB > 0 ? '<span class="werkdag-stress werkdag-stress--sb">Openstaande taken: <strong>' + d.stressSB + '</strong></span>' : '<span class="werkdag-stress werkdag-stress--sb">Alles afgehandeld \u2713</span>');
+      }
+    } else {
+      // Fade transition
+      [werkdagProfitEl, werkdagSBEl].forEach(function(el) {
+        if (el) el.style.opacity = "0";
+      });
+      setTimeout(function() {
+        if (werkdagProfitEl) {
+          werkdagProfitEl.innerHTML = '<p class="werkdag-col__text">' + d.profit + '</p>' +
+            '<span class="werkdag-stress">Openstaande taken: <strong>' + d.stressProfit + '</strong></span>';
+        }
+        if (werkdagSBEl) {
+          werkdagSBEl.innerHTML = '<p class="werkdag-col__text">' + d.sb + '</p>' +
+            (d.stressSB > 0 ? '<span class="werkdag-stress werkdag-stress--sb">Openstaande taken: <strong>' + d.stressSB + '</strong></span>' : '<span class="werkdag-stress werkdag-stress--sb">Alles afgehandeld \u2713</span>');
+        }
+        [werkdagProfitEl, werkdagSBEl].forEach(function(el) {
+          if (el) el.style.opacity = "1";
+        });
+      }, 200);
+    }
+  }
+
+  werkdagDots.forEach(function(dot) {
+    dot.addEventListener("click", function() {
+      var idx = parseInt(dot.getAttribute("data-index"), 10);
+      stopWerkdagAutoplay();
+      setWerkdagSlide(idx);
+    });
+  });
+
+  function stopWerkdagAutoplay() {
+    if (werkdagInterval) {
+      clearInterval(werkdagInterval);
+      werkdagInterval = null;
+    }
+    if (werkdagAutoplayBtn) {
+      werkdagAutoplayBtn.classList.remove("is-playing");
+      var playIcon = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__icon--play");
+      var pauseIcon = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__icon--pause");
+      var textEl = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__text");
+      if (playIcon) playIcon.style.display = "";
+      if (pauseIcon) pauseIcon.style.display = "none";
+      if (textEl) textEl.textContent = "Speel de hele dag af";
+    }
+  }
+
+  function startWerkdagAutoplay() {
+    stopWerkdagAutoplay();
+    werkdagAutoplayBtn.classList.add("is-playing");
+    var playIcon = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__icon--play");
+    var pauseIcon = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__icon--pause");
+    var textEl = werkdagAutoplayBtn.querySelector(".werkdag-autoplay__text");
+    if (playIcon) playIcon.style.display = "none";
+    if (pauseIcon) pauseIcon.style.display = "";
+    if (textEl) textEl.textContent = "Pauzeer";
+
+    werkdagInterval = setInterval(function() {
+      var next = (werkdagIndex + 1) % werkdagData.length;
+      setWerkdagSlide(next);
+      if (next === werkdagData.length - 1) {
+        // Stop after completing full cycle
+        setTimeout(stopWerkdagAutoplay, 3000);
+      }
+    }, 3000);
+  }
+
+  if (werkdagAutoplayBtn) {
+    werkdagAutoplayBtn.addEventListener("click", function() {
+      if (werkdagInterval) {
+        stopWerkdagAutoplay();
+      } else {
+        startWerkdagAutoplay();
+      }
+    });
+  }
+
 });

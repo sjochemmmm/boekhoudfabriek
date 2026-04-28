@@ -148,6 +148,84 @@
       </div>
     </section>
 
+    <!-- ========== 3B. WERKDAG TIJDLIJN ========== -->
+    <section class="werkdag reveal" id="werkdag">
+      <div class="container">
+        <span class="werkdag-label">EEN DAG OP KANTOOR</span>
+        <h2 class="werkdag-title">De werkdag van een accountant. Twee versies.</h2>
+        <p class="werkdag-intro">Klik op een tijdstip en zie wat er gebeurt in Profit en in SB.</p>
+
+        <div class="werkdag-spacer"></div>
+
+        <div class="werkdag-card">
+          <!-- Auto-play knop -->
+          <div class="werkdag-autoplay-wrap">
+            <button class="werkdag-autoplay" id="werkdagAutoplay" aria-label="Speel de hele dag af">
+              <svg class="werkdag-autoplay__icon werkdag-autoplay__icon--play" viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true"><polygon points="4,2 18,10 4,18"/></svg>
+              <svg class="werkdag-autoplay__icon werkdag-autoplay__icon--pause" viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true" style="display:none"><rect x="3" y="2" width="5" height="16"/><rect x="12" y="2" width="5" height="16"/></svg>
+              <span class="werkdag-autoplay__text">Speel de hele dag af</span>
+            </button>
+          </div>
+
+          <!-- Tijdlijn -->
+          <div class="werkdag-timeline" role="tablist" aria-label="Tijdstippen werkdag">
+            <div class="werkdag-timeline__track">
+              <button class="werkdag-dot is-active" role="tab" aria-selected="true" data-index="0" aria-label="09:00 – Start van de dag">
+                <span class="werkdag-dot__ring"></span>
+                <span class="werkdag-dot__label">09:00</span>
+              </button>
+              <span class="werkdag-line"></span>
+              <button class="werkdag-dot" role="tab" aria-selected="false" data-index="1" aria-label="10:30 – Btw-aangifte voorbereiden">
+                <span class="werkdag-dot__ring"></span>
+                <span class="werkdag-dot__label">10:30</span>
+              </button>
+              <span class="werkdag-line"></span>
+              <button class="werkdag-dot" role="tab" aria-selected="false" data-index="2" aria-label="12:00 – Lunch">
+                <span class="werkdag-dot__ring"></span>
+                <span class="werkdag-dot__label">12:00</span>
+              </button>
+              <span class="werkdag-line"></span>
+              <button class="werkdag-dot" role="tab" aria-selected="false" data-index="3" aria-label="13:30 – Klant belt met vraag">
+                <span class="werkdag-dot__ring"></span>
+                <span class="werkdag-dot__label">13:30</span>
+              </button>
+              <span class="werkdag-line"></span>
+              <button class="werkdag-dot" role="tab" aria-selected="false" data-index="4" aria-label="15:00 – Jaarrekening maken">
+                <span class="werkdag-dot__ring"></span>
+                <span class="werkdag-dot__label">15:00</span>
+              </button>
+              <span class="werkdag-line"></span>
+              <button class="werkdag-dot" role="tab" aria-selected="false" data-index="5" aria-label="17:00 – Einde werkdag">
+                <span class="werkdag-dot__ring"></span>
+                <span class="werkdag-dot__label">17:00</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Fase-titel -->
+          <p class="werkdag-fase" id="werkdagFase">Start van de dag</p>
+
+          <!-- Twee kolommen -->
+          <div class="werkdag-columns">
+            <div class="werkdag-col werkdag-col--profit" role="tabpanel">
+              <h3 class="werkdag-col__header">In Profit</h3>
+              <div class="werkdag-col__body" id="werkdagProfit">
+                <p class="werkdag-col__text">Mailbox checken. 14 mailtjes van klanten met bonnetjes en vragen. Bijlages downloaden, sorteren, op de juiste plek zetten.</p>
+                <span class="werkdag-stress">Openstaande taken: <strong>14</strong></span>
+              </div>
+            </div>
+            <div class="werkdag-col werkdag-col--sb" role="tabpanel">
+              <h3 class="werkdag-col__header">In AFAS SB</h3>
+              <div class="werkdag-col__body" id="werkdagSB">
+                <p class="werkdag-col__text">Admin Center openen. Ik zie direct welke klanten vandaag aandacht nodig hebben. Bonnen staan al in het systeem via de AFAS Link app.</p>
+                <span class="werkdag-stress werkdag-stress--sb">Openstaande taken: <strong>3</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ========== 4. VERGELIJKINGSTABEL PROFIT VS SB ========== -->
     <section class="comparison reveal" id="vergelijking">
       <div class="container">
