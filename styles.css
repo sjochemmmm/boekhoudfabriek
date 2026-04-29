@@ -883,14 +883,17 @@ section {
   font-style: italic;
 }
 
-/* --- Stappenplan intro --- */
-.steps-pre {
+/* --- Stappenplan label --- */
+.steps-label {
+  display: block;
   text-align: center;
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  color: var(--afas-tekst);
-  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--afas-oranje);
+  margin-bottom: 16px;
 }
 
 @media (max-width: 767px) {
@@ -2734,15 +2737,20 @@ section {
 
 .steps-title {
   text-align: center;
-  margin-bottom: 12px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--afas-antraciet);
+  margin-bottom: 16px;
 }
 
 .steps-intro {
   text-align: center;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto 60px;
   font-family: "Open Sans", sans-serif;
-  font-size: 18px;
+  font-weight: 300;
+  font-size: 20px;
   color: var(--afas-tekst);
   line-height: 1.6;
 }
@@ -2755,21 +2763,13 @@ section {
 
 .step-card {
   flex: 1;
-  max-width: 340px;
-  text-align: center;
-  padding: 0 24px;
-}
-
-.step-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--afas-blauw-zacht);
-  color: var(--afas-blauw);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
+  max-width: 300px;
+  text-align: left;
+  padding: 32px;
+  background: var(--afas-wit);
+  border-top: 4px solid var(--afas-oranje);
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
 }
 
 .step-number {
@@ -2779,23 +2779,38 @@ section {
   font-size: 48px;
   color: var(--afas-blauw);
   line-height: 1;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+.step-duration {
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--afas-oranje);
+  border: 1px solid var(--afas-oranje);
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 .step-card__title {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   color: var(--afas-antraciet);
-  margin-bottom: 12px;
+  margin-top: 16px;
+  margin-bottom: 0;
 }
 
 .step-card__desc {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.5;
   color: var(--afas-tekst);
+  margin-top: 12px;
 }
 
 .step-arrow {
@@ -2804,7 +2819,7 @@ section {
   justify-content: center;
   color: var(--afas-blauw);
   flex-shrink: 0;
-  padding-top: 80px;
+  padding-top: 40px;
 }
 
 .step-arrow--right {
@@ -2815,6 +2830,33 @@ section {
   display: none;
 }
 
+/* Steps statement block */
+.steps-statement {
+  margin-top: 60px;
+  background: var(--afas-blauw);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.steps-statement__title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--afas-wit);
+  margin: 0 0 16px;
+}
+
+.steps-statement__text {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--afas-wit);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
 @media (max-width: 767px) {
   .steps {
     padding: 60px 0;
@@ -2823,11 +2865,12 @@ section {
   .steps-grid {
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 0;
   }
 
   .step-card {
     max-width: 100%;
+    width: 100%;
   }
 
   .step-arrow--right {
@@ -2836,6 +2879,12 @@ section {
 
   .step-arrow--down {
     display: flex;
+    padding-top: 0;
+    padding: 12px 0;
+  }
+
+  .steps-statement {
+    padding: 32px 24px;
   }
 }
 
