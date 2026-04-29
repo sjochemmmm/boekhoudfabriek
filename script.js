@@ -324,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const werkdagData = [
     {
       fase: "Start van de dag",
-      profit: "Mailbox checken. 14 mailtjes van klanten met bonnetjes en vragen. Bijlages downloaden, sorteren, handmatig op de juiste plek in de klantadministratie zetten.",
+      profit: "Mailbox checken. 14 mailtjes van klanten met bonnetjes en vragen. Bijlagen downloaden, sorteren, handmatig op de juiste plek in de klantadministratie zetten.",
       sb: "Admin Center openen. Ik zie direct welke klanten vandaag aandacht nodig hebben. Bonnen staan al in het systeem via de AFAS Link app.",
       stressProfit: 14,
       stressSB: 3
@@ -338,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       fase: "Lunch",
-      profit: "Snel even, want vanmiddag moet ik nog drie jaarrekeningen in elkaar zetten.",
+      profit: "Snel, want vanmiddag moet ik nog drie jaarrekeningen in elkaar zetten.",
       sb: "Rustig. Drie jaarrekeningen staan al klaar, alleen nog controleren vanmiddag.",
       stressProfit: 9,
       stressSB: 2
