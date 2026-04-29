@@ -3351,3 +3351,195 @@ section {
     transition: background 0.2s ease, color 0.2s ease;
   }
 }
+
+/* --- Prijsverhaal --- */
+.prijsverhaal {
+  background: var(--afas-bg-licht);
+  padding: 100px 0;
+}
+
+.prijsverhaal-label {
+  display: block;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--afas-oranje);
+  margin-bottom: 16px;
+}
+
+.prijsverhaal-title {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--afas-antraciet);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.prijsverhaal-intro {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--afas-tekst);
+  max-width: 800px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+.prijsverhaal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+}
+
+.prijsverhaal-col--verhaal {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+
+.prijsverhaal-col--prijzen {
+  background: var(--afas-blauw);
+  padding: 40px;
+  border-radius: 12px;
+  color: var(--afas-wit);
+}
+
+.prijsverhaal-col__title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.prijsverhaal-col--verhaal .prijsverhaal-col__title {
+  color: var(--afas-antraciet);
+}
+
+.prijsverhaal-col--prijzen .prijsverhaal-col__title {
+  color: var(--afas-wit);
+}
+
+.prijsverhaal-col__text {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--afas-tekst);
+  margin-bottom: 16px;
+}
+
+.prijsverhaal-col__text:last-child {
+  margin-bottom: 0;
+}
+
+.prijsverhaal-rij {
+  padding: 16px 0;
+}
+
+.prijsverhaal-rij__naam {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--afas-oranje);
+  margin-bottom: 4px;
+}
+
+.prijsverhaal-rij__prijs {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: 32px;
+  color: var(--afas-wit);
+  margin-bottom: 4px;
+}
+
+.prijsverhaal-rij__sub {
+  display: block;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 6px;
+}
+
+.prijsverhaal-rij__desc {
+  display: block;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.prijsverhaal-rij-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.prijsverhaal-disclaimer {
+  margin-top: 24px;
+  background: rgba(245, 159, 57, 0.15);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.prijsverhaal-disclaimer p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.prijsverhaal-statement {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.prijsverhaal-statement__line1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--afas-antraciet);
+  margin-bottom: 4px;
+}
+
+.prijsverhaal-statement__line2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--afas-blauw);
+  margin-bottom: 20px;
+}
+
+.prijsverhaal-statement__sub {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--afas-tekst);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 767px) {
+  .prijsverhaal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prijsverhaal-col--verhaal,
+  .prijsverhaal-col--prijzen {
+    padding: 28px 20px;
+  }
+}
