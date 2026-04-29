@@ -420,8 +420,50 @@ document.addEventListener("DOMContentLoaded", () => {
     dot.addEventListener("click", function() {
       var idx = parseInt(dot.getAttribute("data-index"), 10);
       setWerkdagSlide(idx);
+      resetWerkdagAutoplay();
     });
   });
+
+  // Auto-play werkdag timeline
+  var werkdagTimer = null;
+  var werkdagAutoplayDelay = 6000; // 6 seconden per stap
+
+  function werkdagAutoplayNext() {
+    var next = (werkdagIndex + 1) % werkdagData.length;
+    setWerkdagSlide(next);
+  }
+
+  function startWerkdagAutoplay() {
+    stopWerkdagAutoplay();
+    werkdagTimer = setInterval(werkdagAutoplayNext, werkdagAutoplayDelay);
+  }
+
+  function stopWerkdagAutoplay() {
+    if (werkdagTimer) {
+      clearInterval(werkdagTimer);
+      werkdagTimer = null;
+    }
+  }
+
+  function resetWerkdagAutoplay() {
+    stopWerkdagAutoplay();
+    startWerkdagAutoplay();
+  }
+
+  // Start autoplay when werkdag section comes into view
+  var werkdagSection = document.getElementById("werkdag");
+  if (werkdagSection) {
+    var werkdagObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          startWerkdagAutoplay();
+        } else {
+          stopWerkdagAutoplay();
+        }
+      });
+    }, { threshold: 0.3 });
+    werkdagObserver.observe(werkdagSection);
+  }
 
   // --- Klantverhalen Carousel ---
   (function() {
