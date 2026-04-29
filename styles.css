@@ -538,6 +538,15 @@ section {
   margin-top: 12px;
 }
 
+.manifest-block__empathy {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 16px;
+}
+
 .manifest-block__link {
   display: inline-block;
   margin-top: 20px;
